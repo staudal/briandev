@@ -1,12 +1,11 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
-import {Callout} from '@/components/Callout'
+import { Callout } from '@/components/Callout'
 
 export const meta = {
   author: 'Brian Ketelsen',
   date: '2022-07-12',
-  title: 'Forecast: Cloudy',
-  description:
-    'It is finally convenient to dump localhost development.',
+  title: 'Forecaster: Cloudy',
+  description: 'It is finally convenient to dump localhost development.',
 }
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
@@ -29,9 +28,9 @@ In order to get this magic you need a server to operate as your control plane, a
 
 You will also need one or more templates to specify how Coder will provision your workspace. I ended up with three templates:
 
-* Docker - run my workspace on a cloud VM inside a docker container
-* AWS EC2 - create a new EC2 instance for my workspace
-* LXD - run my workspace in an LXC container my headless Pop! OS workstation
+- Docker - run my workspace on a cloud VM inside a docker container
+- AWS EC2 - create a new EC2 instance for my workspace
+- LXD - run my workspace in an LXC container my headless Pop! OS workstation
 
 Don't worry, I'll share these templates a bit later so you can get some of this sweet, sweet cloud development action.
 
@@ -108,13 +107,13 @@ Use `sudo journalctl -u coder` to see the first few lines of output from the cod
 
 ```text
 coder[21590]:  Get started by creating the first user (in a new terminal):
-coder[21590]:  coder login https://reallylongtokenurlwithyourdomain 
+coder[21590]:  coder login https://reallylongtokenurlwithyourdomain
 ```
 
 You'll want to do that from your laptop/client computer. So if you haven't yet, go back to that [installation guide](https://coder.com/docs/coder-oss/latest/install) and install the coder command line client for your operating system. I used the GitHub release downloads rather than the `curl | bash` method because I didn't want the installer creating a new `coder` server on my laptop. I'm not sure if that was overly cautious, but it worked fine. Once it's installed and moved somewhere in your path, you can create your first admin user:
 
 ```bash
-coder login https://reallylongtokenurlwithyourdomain 
+coder login https://reallylongtokenurlwithyourdomain
 ```
 
 Coder will open a web page and give you a token to paste into your terminal. From this you can do nearly everything from your laptop unless you're using Docker environments. Let's cover that quickly.
@@ -133,19 +132,20 @@ We're on the home stretch now. The coder server is installed, the last step is t
 
 ### Templates
 
-If you're new to Terraform, the templates will be the hardest part of this process. Fortunately there are many examples [in the coder repository](https://github.com/coder/coder/tree/main/examples/templates) to get you started.  I put mine on [GitHub](https://github.com/bketelsen/coder-templates) so you can use them or browse for inspiration.
+If you're new to Terraform, the templates will be the hardest part of this process. Fortunately there are many examples [in the coder repository](https://github.com/coder/coder/tree/main/examples/templates) to get you started. I put mine on [GitHub](https://github.com/bketelsen/coder-templates) so you can use them or browse for inspiration.
 
 Start by cloning the templates (mine or theirs) somewhere so you can edit them. Read the template [documentation](https://coder.com/docs/coder-oss/latest/templates) pretty carefully before you start so you can understand the concept of ephemeral and persistent resources. I'm a cheap guy and don't want to spend any more money than I have to so I wanted to make sure that when I stop a development environment I won't be paying any more than I have to. My EC2 template will use EBS for storage so I can stop the instance and only pay for the storage while the instance is offline. (starting and stopping Coder instances is super-quick from the web interface)
 
 Once you've edited a template, you can push it to the server with the `coder templates` command. From inside a specific template directory run `coder templates create`. It will prompt you with some questions then push the templates to the server where they will be checked and stored for usage later.
 
-If you're using Docker you're done. If you're using a cloud provider you'll need to carefully read the section about how to give the Coder daemon access to your cloud credentials so that it can call your provider's API to provision your infrastructure. 
+If you're using Docker you're done. If you're using a cloud provider you'll need to carefully read the section about how to give the Coder daemon access to your cloud credentials so that it can call your provider's API to provision your infrastructure.
 
 <Callout type="warning" title="Seriously, Read the docs">
-Read the documentation carefully so you're not exposing your cloud provider API credentials to the world. That would be _really bad_.
+  Read the documentation carefully so you're not exposing your cloud provider
+  API credentials to the world. That would be _really bad_.
 </Callout>
 
-Read this carefully, and please -- please -- don't put your credentials in the Terraform files directly.  I added mine as environment variables at the end of the `/etc/coder.d/coder.env` file. Worked perfectly!
+Read this carefully, and please -- please -- don't put your credentials in the Terraform files directly. I added mine as environment variables at the end of the `/etc/coder.d/coder.env` file. Worked perfectly!
 
 ### Your First Workspace
 
@@ -153,7 +153,7 @@ Navigate to your coder access URL in a web browser, log in, then click on the `T
 
 ![Templates](/fixed/images/2022/coder/templates.png)
 
- Choose your preferred template from the list by clicking on that row, then click on the `Create workspace` button at the top of the template detail page.
+Choose your preferred template from the list by clicking on that row, then click on the `Create workspace` button at the top of the template detail page.
 
 ![New Workspace](/fixed/images/2022/coder/newWorkspace.png)
 
@@ -187,7 +187,7 @@ Host coder.blog
  ProxyCommand "/usr/local/bin/coder" --global-config "/Users/bjk/Library/Application Support/coderv2" ssh --stdio blog
 ```
 
-Now you can type `ssh coder.blog` and get a direct connection to that development environment. Go to your favorite IDE or editor and use their Remote SSH session capabilities to get a fully working remote editing environment.  [Full IDE documentation is here](https://coder.com/docs/coder-oss/latest/ides)
+Now you can type `ssh coder.blog` and get a direct connection to that development environment. Go to your favorite IDE or editor and use their Remote SSH session capabilities to get a fully working remote editing environment. [Full IDE documentation is here](https://coder.com/docs/coder-oss/latest/ides)
 
 Here's the mandatory meta-inception screen shot of me editing this blog post in a Docker container running on my coder server in `us-east-1` from my laptop:
 
@@ -199,7 +199,7 @@ I have been using this for 4 days now and I'm really excited. I think I could st
 
 ## References
 
-* [Coder](https://coder.com)
-* [Coder documentation](https://coder.com/docs/coder-oss/latest)
-* [my cloud dotfiles](https://github.com/bketelsen/dotcloud)
-* [my templates](https://github.com/bketelsen/coder-templates)
+- [Coder](https://coder.com)
+- [Coder documentation](https://coder.com/docs/coder-oss/latest)
+- [my cloud dotfiles](https://github.com/bketelsen/dotcloud)
+- [my templates](https://github.com/bketelsen/coder-templates)

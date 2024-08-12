@@ -5,28 +5,19 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import {
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  MastodonIcon
-} from '@/components/SocialIcons'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 
-
-import image3 from '@/images/photos/1102.jpg'
-import image2 from '@/images/photos/20150716-070618871-3.jpg'
-import image1 from '@/images/photos/bike.jpg'
-import image5 from '@/images/photos/band.jpg'
-import image4 from '@/images/photos/BW013.jpg'
-
+import image3 from '@/images/photos/københavn.jpg'
+import image2 from '@/images/photos/maldiverne.jpg'
+import image1 from '@/images/photos/hunde.jpg'
+import image5 from '@/images/photos/santorini.jpg'
+import image4 from '@/images/photos/island.jpg'
 
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
-import  siteMeta, {resume} from '@/data/siteMeta'
-import { NextSeo } from 'next-seo';
-
+import siteMeta, { resume } from '@/data/siteMeta'
+import { NextSeo } from 'next-seo'
 
 function MailIcon(props) {
   return (
@@ -140,7 +131,6 @@ function Newsletter() {
 }
 
 function Resume() {
-
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -181,8 +171,12 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button href="https://linkedin.com/in/brianketelsen" variant="secondary" className="group mt-6 w-full">
-               More on LinkedIn 
+      <Button
+        href="https://linkedin.com/in/brianketelsen"
+        variant="secondary"
+        className="group mt-6 w-full"
+      >
+        More on LinkedIn
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
@@ -219,59 +213,47 @@ function Photos() {
 export default function Home({ articles }) {
   return (
     <>
-    <NextSeo
-      title="Brian Ketelsen"
-      description={siteMeta.description}
-      canonical="https://brian.dev/"
-      openGraph={{
-        url: 'https://brian.dev',
-        images: [
-          {
-            url: `https://og.brian.dev/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
-            width: 1200,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
-          }
-        ],
-        siteName: 'brian.dev',
-      }}
-    />
+      <NextSeo
+        title="Jakob Staudal"
+        description={siteMeta.description}
+        canonical="https://jakey.dk/"
+        openGraph={{
+          url: 'https://jakey.dk',
+          images: [
+            {
+              url: `https://og.jakey.dk/api/og?title=${siteMeta.title}&desc=${siteMeta.description}`,
+              width: 1200,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+          ],
+          siteName: 'jakey.dk',
+        }}
+      />
       <Container className="mt-9">
         <div className="max-w-2xl text-lg">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Cloud Advocate, hacker, and open source enthusiast.
+            Computer Science Student, Developer, and Traveler
           </h1>
-          <p className="mt-6 prose dark:prose-invert">
-            I’m Brian, and I teach people how to use the Cloud. I’ve been active in Open Source for as long as I’ve been coding &mdash; and that’s a long time.
+          <p className="prose mt-6 dark:prose-invert">
+            I’m Jakob, a passionate developer, longevity enthusiast, and
+            traveler. Balancing life between coding, staying active, and
+            exploring new places.
           </p>
-          <p className="mt-6 prose dark:prose-invert">
-            With some friends, I wrote a <a href="https://www.manning.com/books/go-in-action">book about the Go programming language</a>.
-             I’ve given many <Link href={"/speaking"} >talks</Link> about Go, Distributed Computing, and programming in general.
+          <p className="prose mt-6 dark:prose-invert">
+            Currently, I’m working as a full-stack developer at Postbuddy, where
+            I create user-friendly solutions. When I’m not coding, I’m either
+            out for a run, planning my next trip or studying computer science at
+            SDU in Odense, Denmark.
           </p>
-          <p className="mt-6 prose dark:prose-invert">
-            Poke around and see what I’m up to. It’s all open source, so feel free to contribute.
+          <p className="prose mt-6 dark:prose-invert">
+            Feel free to explore my projects, and if something catches your eye,
+            I’d love to collaborate!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href={siteMeta.author.twitter}
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
-            />
-            <SocialLink
-              href={siteMeta.author.mastodon}
-              aria-label="Follow on Mastodon"
-              icon={MastodonIcon}
-              rel="me"
-            />
-
-            <SocialLink
-              href={siteMeta.author.instagram}
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="https://github.com"
+              href={siteMeta.author.github}
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />

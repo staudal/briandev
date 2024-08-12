@@ -1,65 +1,52 @@
 
-import logoAmazon from '@/images/logos/aws.svg'
-import logoClarity from '@/images/logos/clarity.jpg'
-import logoMicrosoft from '@/images/logos/azure.svg'
-import logoXOR from '@/images/logos/xor.jpg'
+import logoPostbuddy from '@/images/logos/postbuddy.svg'
+import logoIbm from '@/images/logos/ibm.svg'
+import logoRhapsody from '@/images/logos/rhapsody.svg'
 import logoVanilla from '@/images/logos/vanilla.svg'
 import logoFleek from '@/images/logos/fleeksvg.svg'
 import logoUblue from '@/images/logos/ublue.png'
 
 import logoGolang from '@/images/logos/icons8-golang.svg'
 import logoKubernetes from '@/images/logos/kubernetes.svg'
-import logoCaptainhook from '@/images/logos/captainhook.svg'  
+import logoCaptainhook from '@/images/logos/captainhook.svg'
 const siteMeta = {
-    title: "Brian Ketelsen",
-    description: "Brian Ketelsen is a developer advocate, keynote speaker, author, and open source practitioner.",
-    copyright: "Brian Ketelsen, CC-BY-SA",
-    author: {
-        name: "Brian Ketelsen",
-        email: "me@brian.dev",
-        twitter: "https://twitter.com/bketelsen",
-        mastodon: "https://tty0.social/@bketelsen",
-        instagram: "https://instagram.com/bketelsen",
-        github: "https://github.com/bketelsen",
-        linkedin: "https://linkedin.com/in/brianketelsen",
-        twitch: "https://twitch.tv/bketelsen",
-        youtube: "https://youtube.com/@bketelsen",
-    },
-    siteUrl: "https://brian.dev"
+  title: "Jakob Staudal",
+  description: "Jakob Staudal is a Computer Science student and full-stack developer at Postbuddy, a Danish startup. He is passionate about coding, algorithms, and all things techy.",
+  copyright: "Jakob Staudal",
+  author: {
+    name: "Jakob Staudal",
+    email: "jakobstaudal@outlook.com",
+    github: "https://github.com/staudal",
+    linkedin: "https://www.linkedin.com/in/jakobstaudal/",
+  },
+  siteUrl: "https://jakey.dk"
 }
- export const resume = [
-    {
-      company: 'Amazon',
-      title: 'Principal Developer Advocate',
-      logo: logoAmazon,
-      start: '2022',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
-      },
+export const resume = [
+  {
+    company: 'Postbuddy',
+    title: 'Full Stack Developer',
+    logo: logoPostbuddy,
+    start: 'Mar 2024',
+    end: {
+      label: 'Present',
+      dateTime: new Date().getFullYear(),
     },
-    {
-      company: 'Microsoft',
-      title: 'Principal Cloud Developer Advocate',
-      logo: logoMicrosoft,
-      start: '2017',
-      end: '2022',
-    },
-    {
-      company: 'XOR Data Exchange',
-      title: 'CIO',
-      logo: logoXOR,
-      start: '2014',
-      end: '2016',
-    },
-    {
-      company: 'Clarity Services, Inc.',
-      title: 'COO',
-      logo: logoClarity,
-      start: '2008',
-      end: '2014',
-    },
-  ]
+  },
+  {
+    company: 'Rhapsody',
+    title: 'Backend Developer',
+    logo: logoRhapsody,
+    start: 'Sep 2023',
+    end: 'Mar 2024',
+  },
+  {
+    company: 'IBM',
+    title: 'Student Assistant',
+    logo: logoIbm,
+    start: 'May 2022',
+    end: 'Aug 2023',
+  },
+]
 export const projects = [
   {
     name: 'Fleek',

@@ -3,26 +3,19 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import {
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  MastodonIcon
-} from '@/components/SocialIcons'
-import portraitImage from '@/images/brian-head.jpg'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import portraitImage from '@/images/jakob-head.jpeg'
 import siteMeta from '@/data/siteMeta'
-import { NextSeo } from 'next-seo';
-
+import { NextSeo } from 'next-seo'
 
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="flex text-sm font-medium transition group text-zinc-800 hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       >
-        <Icon className="flex-none w-6 h-6 transition fill-zinc-500 group-hover:fill-teal-500" />
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -44,11 +37,11 @@ export default function About() {
   return (
     <>
       <NextSeo
-        title="About - Brian Ketelsen"
+        title="About - Jakob Staudal"
         description={siteMeta.description}
-        canonical="https://brian.dev/about"
+        canonical="https://jakey.dk/about"
         openGraph={{
-          url: 'https://brian.dev/about',
+          url: 'https://jakey.dk/about',
           images: [
             {
               url: `https://og.brian.dev/api/og?title=About&desc=${siteMeta.description}`,
@@ -56,9 +49,9 @@ export default function About() {
               height: 600,
               alt: 'Og Image Alt',
               type: 'image/jpeg',
-            }
+            },
           ],
-          siteName: 'brian.dev',
+          siteName: 'jakey.dk',
         }}
       />
       <Container className="mt-16 sm:mt-32">
@@ -69,66 +62,71 @@ export default function About() {
                 src={portraitImage}
                 alt=""
                 sizes="(min-width: 1024px) 32rem, 20rem"
-                className="object-cover aspect-square rotate-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800"
+                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
               />
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Brian Ketelsen. I live in Florida, where I help people
-              across the world learn the Cloud.
+              I’m Jakob Staudal. I live in Denmark where I’m currently pursuing
+              a Bachelor’s Degree in Computer Science.
             </h1>
-            <div className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
+            <div className="prose mt-6 space-y-7 text-lg text-zinc-600 dark:prose-invert dark:text-zinc-400">
               <p>
-                Howdy! Thanks for stopping by. I’m Brian and I’ve been doing technology
-                things since <a href="https://en.wikipedia.org/wiki/Acoustic_coupler">acoustic
-                  modem couplers</a> were a thing. I love Open Source and exploring different programming languages.
-                Some highlights about me and my activities:
+                I’m Jakob, a Computer Science student at SDU in Odense, Denmark,
+                where I’m diving deep into the world of coding, algorithms, and
+                all things techy. But I’m not just hitting the books—I’m also
+                rolling up my sleeves as a full-stack developer at Postbuddy, a
+                super cool Danish startup that’s shaking things up when it comes
+                to automated direct marketing.
               </p>
               <p>
-                <b>Army Veteran:</b> Bradley Fighting Vehicle Gunner, Infantry, 1st Armored Division
+                When I’m not coding, you’ll probably find me working on small,
+                fun tools that make everyday tasks a bit easier (and a lot more
+                interesting!). Outside of tech, I’m all about staying
+                healthy—I’m really into running and fitness, and I love the
+                feeling of pushing my limits.
               </p>
               <p>
-                <b>Father of <s>four</s> five</b> with <s>19</s> 21 years difference between oldest and youngest child
+                Travel is another big passion of mine, and whenever I get the
+                chance, I’m off exploring new places. I recently moved to Odense
+                after spending my whole life in Northern Zealand, and I’m loving
+                the adventure of discovering a new city.
               </p>
               <p>
-                <b>Co-founded GopherCon</b> <a href="https://gophercon.com">the largest conference for Go developers</a>.
+                At home, I’m kept on my toes by my two dogs, Maui and Elliot,
+                who bring a lot of energy and joy into my life. And I’m lucky to
+                share all of this with my amazing girlfriend, Line, who’s also
+                studying at SDU. Together, we’re navigating the exciting (and
+                sometimes hectic) life of students, developers, and dog parents.
               </p>
               <p>
-                <b>Co-authored</b> <a href="https://www.amazon.com/Go-Action-William-Kennedy/dp/1617291781">Go In Action</a> for Manning Publishing.
-              </p>
-              <p>
-                <b>Co-wrote</b> Skynet and SkyDNS with Erik St. Martin, which was eventually morphed into the DNS service discovery that powers Kubernetes.
-              </p>
-              <p>
-                <b>Contributed</b> to the largest projects that power the Internet. Go, Kubernetes, Etcd, and so many more.
-              </p>
-              <p>
-                I love Open Source, learning in public, and sharing what I learn with others.
+                Welcome to my little corner of the web! Feel free to explore,
+                check out my projects, and see what I’ve been up to. Let’s
+                connect and maybe even create something amazing together!
               </p>
             </div>
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href={siteMeta.author.twitter} icon={TwitterIcon}>
-                Follow on Twitter
-              </SocialLink>
-              <SocialLink href={siteMeta.author.mastodon} icon={MastodonIcon} className="mt-4">
-                Follow on Mastodon
-              </SocialLink>
-              <SocialLink href={siteMeta.author.instagram} icon={InstagramIcon} className="mt-4">
-                Follow on Instagram
-              </SocialLink>
-              <SocialLink href={siteMeta.author.github} icon={GitHubIcon} className="mt-4">
+              <SocialLink
+                href={siteMeta.author.github}
+                icon={GitHubIcon}
+                className="mt-4"
+              >
                 Follow on GitHub
               </SocialLink>
-              <SocialLink href={siteMeta.author.linkedin} icon={LinkedInIcon} className="mt-4">
+              <SocialLink
+                href={siteMeta.author.linkedin}
+                icon={LinkedInIcon}
+                className="mt-4"
+              >
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
                 href={`mailto:${siteMeta.author.email}`}
                 icon={MailIcon}
-                className="pt-8 mt-8 border-t border-zinc-100 dark:border-zinc-700/40"
+                className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >
                 {siteMeta.author.email}
               </SocialLink>
